@@ -6,5 +6,5 @@ Get-Alias
 
 get-command > command.txt # output directed by overwrite
 
-ls >> command.txt # output directed by append
+Get-ChildItem >> command.txt # output directed by append
 

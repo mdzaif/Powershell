@@ -1,3 +1,3 @@
 # User input 
-$name = read-host "Enter your name: "
+$name = read-host -MaskInput "Enter your name: "
 write-host $name

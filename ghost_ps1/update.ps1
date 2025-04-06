@@ -23,14 +23,20 @@ function  Update-Pkg {
     
 }
 
-function Collect-Index {
+function Get-Index {
     
     while($true){
         # take index input
-        $user_in = Read-Host "Enter index number for selection saparate with space and to select all type -1"
+        $user_in = Read-Host "Enter index number for selection saparate with space and to select all press enter"
 
         # spliting input
-        $user_in = $user_in -split '\s+'
+        if ($user_in.length -eq 0){
+            $user_in = @()
+            return $user_in
+        }
+        else{
+            $user_in = $user_in -split '\s+'
+        }
 
         # index array
         $user_in = $user_in | ForEach-Object { 
@@ -69,9 +75,9 @@ Write-Host "`n-------------Index number for Package ID---------------------`n"
 for ( $i = 0; $i -lt $update_list.length; $i++ ){ write-host $i $update_list[$i] }
 
 # select package
-$index_num = Collect-Index
+$index_num = Get-Index
 
-if($index_num[0] -eq -1){
+if($index_num.length -eq 0){
     Update-Pkg -pkgs $update_list
 }
 else{
