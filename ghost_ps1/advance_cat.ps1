@@ -5,4 +5,4 @@
 param(
     $arg1
 )
-Get-Content $arg1s | ForEach-Object {"$($_.ReadCount) $_"}
+Get-Content $arg1 | ForEach-Object {"$($_.ReadCount) $_"}
