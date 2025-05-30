@@ -1,3 +1,6 @@
+# face Get-WinGetPackage this module not working so: visit the site: https://www.powershellgallery.com/packages/Microsoft.WinGet.Client/1.6.3133.0
+# ok then  run this command shown their Install-Module -Name Microsoft.WinGet.Client -RequiredVersion 1.6.3133.0 # note that you can chnage version given list under the command section
+# also, make sure you using powershell version 5+. I test this script in powershell version 7. 
 # Update function
 function  Update-Pkg {
     param (
@@ -60,11 +63,9 @@ function Get-Index {
 # Clear Screen
 Clear-Host
 
-# Executa o comando winget upgrade para verificar atualizações disponíveis
 Write-Host "`nChecking for available package updates..."
 winget update
 
-# Obtém a lista de pacotes instalados e identifica os que têm atualizações disponíveis
 $installed = Get-WinGetPackage -Source winget
 $updatable = $installed | Where-Object IsUpdateAvailable | Select-Object -ExpandProperty Id
 
