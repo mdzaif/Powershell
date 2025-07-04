@@ -63,6 +63,16 @@ function Get-Index {
 # Clear Screen
 Clear-Host
 
+$moduleName = "Microsoft.WinGet.Client"
+
+# Check if the module is installed
+if (-not (Get-Module -ListAvailable -Name $moduleName)) {
+    Write-Host "The module '$moduleName' is not installed. Exiting script." -ForegroundColor Red
+    exit 1
+} else {
+    Write-Host "The module '$moduleName' is installed." -ForegroundColor Green
+}
+
 Write-Host "`nChecking for available package updates..."
 winget update
 
